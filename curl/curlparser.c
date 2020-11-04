@@ -7,6 +7,7 @@ char** argv;
 struct argument * a;
 {
     int i;
+    int j;
     int argnum;
 
     argnum = 0;
@@ -25,6 +26,22 @@ struct argument * a;
             arg.value = argv[i];
             a[argnum] = arg;
             argnum++;
+        } else {
+            int found;
+            found = 0;
+            for (j = 0; j < MAXARGS; j++) {
+                if (a[j].key == 'H' || a[j].key == 'h') {
+                    a[j].value = argv[i];
+                    found = 1;
+                }
+            }
+            if (!found) {
+                struct argument arg;
+                arg.key = 'H';
+                arg.value = argv[i];
+                a[argnum] = arg;
+                argnum++;
+            }
         }
     }
 }
