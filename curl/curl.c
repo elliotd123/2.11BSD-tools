@@ -26,9 +26,6 @@ struct options o;
     return "";
   }
 
-  hostname = "htpc.elliot.lan";
-  
-
   bzero(&bba, sizeof(bba));
   bba.sin_family = AF_INET;
 
